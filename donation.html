@@ -62,7 +62,7 @@
      giver: doner
    };
    // Send the POST request to NodeJS API server
-   fetch('http://localhost:3060/api/concerts', {
+   fetch('http://localhost:3000/fundraiser/${fundraiserId}/donate', {
        method: 'POST',
        headers: {
            'Content-Type': 'application/json'
