@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<!-- Donation page -->
+<html>
+<header>
+  <h1>Name of the web page</h1>
+</header>
+<body>
+  <nav></nav>
+  <h2 class="form-title">Make a Donation</h2>
+<!-- Fundraiser Details -->
+  <a href="/fundraiser?id=1">Fundraiser</a>
+
+  <!-- Adding Form for the client put details -->
+  <form id="donation-form" onsubmit="validateDonation(); return(false);">>
+    <label for="donator-name">First Name:</label>
+            <input type="text" id="donator-name" placeholder="Name"/><br/>
+    <label for="last-name">Last Name:</label>
+            <input type="text" id="last-name" placeholder="Lastname"/></br>
+    <label for="email">Email:</label>
+          <input type="text" id="email" placeholder="Email"/></br>
+    <label for="phone-number">Phone:</label>
+          <input type="text" id="phone-number" placeholder="Phone"/></br>
+
+<!-- Placing the min amout of money to donate from -->
+    <label for= "amount-min">Amount $AUD:</label>
+    <input type="number" id="amount" name="Amount" min="5">
+
+<!-- Placing button to execute donation -->
+    <button type="submit" value="Submit my donation"</button>
+
+  </form>
+  <script>
+// Fetch fundraiser Details
+// <h2>Donating to:</h2>
+// <h2>Categort
+  // Same code of your fundraiser page to get the fundraiser information by ID
+  function validateDonation(){
+    const FirstName = document.getElementById('donator-name').value.trim();
+    const LastName = document.getElementById('last-name').value.trim();
+    const Email = document.getElementById('email').value.trim();
+    const Phone = document.getElementById('phone-number').value.trim();
+
+// Validate the form with all information required
+    if (!FirstName || !LastName || !Email ||!Phone) {
+     alert("All fields are required!");
+     return;
+   }
+
+   // creating data (json) to send in the post request
+   const donatorData = {'FirstName': FirstName, 'LastName': LastName, 'Email': Email, 'Phone':Phone};
+
+
+   // Validating the amount of donation from 5 $AUD
+   const amount = parseFloat(document.getElementById('amount').value);
+   const doner = document.getElementById('doner').value;
+   if (amount<5){
+     alert('The minimum amount of donation is $5 AUD');
+     return;
+   }
+   // Preparing donation data
+   const donationData = {
+     fundraiserId: fundraiserId,
+     amount: amount,
+     giver: doner
+   };
+   // Send the POST request to NodeJS API server
+   fetch('http://localhost:3060/api/concerts', {
+       method: 'POST',
+       headers: {
+           'Content-Type': 'application/json'
+       },
+       body: JSON.stringify(donatorData)
+   })
+   .then(response => response.json())
+   .then(data => {
+       if (data.insert === 'success') {
+           alert("Concert added successfully!");
+           document.getElementById('donation-form').reset(); // to clear the form
+       } else if (data.insert === 'error') {
+           alert("Error: " + data.message);
+       }
+   })
+   .catch(error => {
+       console.error("Error:", error);
+   });
+  }
+  </script>
+
+</body>
+</html>
