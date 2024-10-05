@@ -10,49 +10,80 @@
 <body>
     <h1>Admin Section</h1>
 
-  <section id= "fundraiser-section">
-    <h2>Fundraisers</h2>
-    <ul id="fundraisersList"></ul>
-  </section>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <meta name="description" content="Page for admin to edit and manage the fundraiser details">
+</head>
+<body>
+    <h1>Admin Section</h1>
 
-<!--   Form to create a fundraiser -->
-  <section id="create-fundraiser">
-      <h2>Create a new Fundraiser</h2>
-      <form id="createfundraiserform" onsubmit= "createfundraiser(event)">
-          <label for="organizer">Organizer:</label>
-          <input type="text" id="organizer" name="organizer" required>
-          <label for="city">City:</label>
-          <input type="text" id="city" name="city" required>
-          <label for="category">Category:</label>
-          <input type="text" id="category" name="category" required>
-          <label for="target-funding">Target Funding:</label>
-          <input type="text" id="target-funding" name="target-funding" required>
-          <label for="caption">Caption:</label>
-          <input type="text" id="caption" name="caption" required>
-          <button type="submit">Save</button>
-      </form>
-  </section>
+    <!-- Form to create a fundraiser -->
+    <section id="create-fundraiser">
+        <h2>Create a New Fundraiser</h2>
+        <form id="createfundraiserform" onsubmit="createfundraiser(event)">
+            <label for="organizer">Organizer:</label>
+            <input type="text" id="organizer" name="organizer" required>
 
-<!--     Update existing fundraiser data -->
-  <section id="edite-fundraiser" style="display:none;">
-      <h2>Update Fundraser</h2>
-      <form id="editfundraiserform" onsubmit= "updatefundraiser(event)">
-          <input type="hidden" id="editFundraiserId">
-          <label for="organizer-edit">Organizer:</label>
-          <input type="text" id="organizer-edit" name="organizer" required>
-          <label for="city-edit">City:</label>
-          <input type="text" id="city-edit" name="city" required>
-          <label for="category-edit">Category:</label>
-          <input type="text" id="category-edit" name="category" required>
-          <label for="target-funding-edit">Target Funding:</label>
-          <input type="text" id="target-funding-edit" name="target-funding" required>
-          <label for="caption-edit">Caption:</label>
-          <textarea id="caption-edit" name="caption"></textarea>
-          <select for="active-edit">Active:</label>
-            <option value='1'>Active</option>
-            <option value='0'>Inactive</option> 
-          </select>
-          <button type="submit">Update</button>
-  </section>
+            <label for="city">City:</label>
+            <input type="text" id="city" name="city" required>
+
+            <label for="category">Category:</label>
+            <input type="text" id="category" name="category" required>
+
+            <label for="target-funding">Target Funding:</label>
+            <input type="text" id="target-funding" name="target-funding" required>
+
+            <label for="caption">Caption:</label>
+            <input type="text" id="caption" name="caption" required>
+
+            <button type="submit">Save</button>
+        </form>
+    </section>
+
+    <!-- Form to update an existing fundraiser -->
+    <section id="edit-fundraiser" style="display:none;">
+        <h2>Update Fundraiser</h2>
+        <form id="editfundraiserform" onsubmit="updatefundraiser(event)">
+            <input type="hidden" id="editFundraiserId">
+
+            <label for="organizer-edit">Organizer:</label>
+            <input type="text" id="organizer-edit" name="organizer" required>
+
+            <label for="city-edit">City:</label>
+            <input type="text" id="city-edit" name="city" required>
+
+            <label for="category-edit">Category:</label>
+            <input type="text" id="category-edit" name="category" required>
+
+            <label for="target-funding-edit">Target Funding:</label>
+            <input type="text" id="target-funding-edit" name="target-funding" required>
+
+            <label for="caption-edit">Caption:</label>
+            <textarea id="caption-edit" name="caption"></textarea>
+
+            <label for="active-edit">Active:</label>
+            <select id="active-edit" name="active">
+                <option value="1">Active</option>
+                <option value="0">Inactive</option>
+            </select>
+
+            <button type="submit">Update</button>
+        </form>
+    </section>
 <!-- Delete a fundraiser -->
+<!--  <section>
+          <section id= "fundraiser-section">
+        <h2>Fundraisers</h2>
+        <ul id="fundraisersList">
+            <li id="fundraiser-1">
+        <span>Fundraiser Title</span>
+        <button onclick="deleteFundraiser(1)">Delete</button>
+            </li>
+        </ul>      
+   </section> -->
 </body>
