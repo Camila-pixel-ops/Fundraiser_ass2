@@ -29,13 +29,31 @@
           <input type="text" id="target-funding" name="target-funding" required>
           <label for="caption">Caption:</label>
           <input type="text" id="caption" name="caption" required>
+          <button type="submit">Save</button>
       </form>
   </section>
 
 <!--     Update existing fundraiser data -->
-  <section>
+  <section id="edite-fundraiser" style="display:none;">
       <h2>Update Fundraser</h2>
+      <form id="editfundraiserform" onsubmit= "updatefundraiser(event)">
+          <input type="hidden" id="editFundraiserId">
+          <label for="organizer-edit">Organizer:</label>
+          <input type="text" id="organizer-edit" name="organizer" required>
+          <label for="city-edit">City:</label>
+          <input type="text" id="city-edit" name="city" required>
+          <label for="category-edit">Category:</label>
+          <input type="text" id="category-edit" name="category" required>
+          <label for="target-funding-edit">Target Funding:</label>
+          <input type="text" id="target-funding-edit" name="target-funding" required>
+          <label for="caption-edit">Caption:</label>
+          <textarea id="caption-edit" name="caption"></textarea>
+          <select for="active-edit">Active:</label>
+            <option value='1'>Active</option>
+            <option value='0'>Inactive</option> 
+          </select>
+          <button type="submit">Update</button>
       
   </section>
-
+<!-- Delete a fundraiser -->
 </body>
